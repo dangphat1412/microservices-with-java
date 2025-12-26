@@ -1,6 +1,7 @@
 package com.secure.accounts.controller;
 
 import com.secure.accounts.constants.AccountsConstants;
+import com.secure.accounts.dto.AccountsContractInfoDto;
 import com.secure.accounts.dto.CustomerDto;
 import com.secure.accounts.dto.ResponseDto;
 import com.secure.accounts.service.IAccountsService;
@@ -11,6 +12,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +27,11 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 public class AccountsController {
     private final IAccountsService iAccountsService;
+    private final Environment environment;
+    private final AccountsContractInfoDto accountsContractInfoDto;
+
+    @Value("${build.version}")
+    private String buildVersion;
 
     @Operation(summary = "Create Account API", description = "API to create a new account")
     @ApiResponses({
@@ -91,6 +99,36 @@ public class AccountsController {
                     .status(HttpStatus.EXPECTATION_FAILED)
                     .body(new ResponseDto(AccountsConstants.STATUS_417, AccountsConstants.MESSAGE_417_DELETE));
         }
+    }
+
+    @Operation(summary = "Get Build Information", description = "Get the build version of the Accounts Microservice")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Build information fetched successfully"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    })
+    @GetMapping("/build-info")
+    public ResponseEntity<String> getBuildVersion() {
+        return ResponseEntity.ok(buildVersion);
+    }
+
+    @Operation(summary = "Get Java version", description = "Get the Java version used by the Accounts Microservice")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Java version fetched successfully"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    })
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion() {
+        return ResponseEntity.ok(environment.getProperty("java.version"));
+    }
+
+    @Operation(summary = "Get Contact Info", description = "Get the contact information for the Accounts Microservice")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Contact information fetched successfully"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    })
+    @GetMapping("/contact-info")
+    public ResponseEntity<AccountsContractInfoDto> getContactInfo() {
+        return ResponseEntity.ok(accountsContractInfoDto);
     }
 
 }
