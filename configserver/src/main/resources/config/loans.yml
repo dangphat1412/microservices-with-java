@@ -1,0 +1,11 @@
+build:
+  version: "3.0"
+
+loans:
+  message: "Welcome to Loans related local APIs "
+  contactDetails:
+    name: "Amaal Grega - Developer"
+    email: "{cipher}8515aee0b26974c7728297e44f9fe2d74c7143dd8c992805489289e084682bda"
+  onCallSupport:
+    - (452) 456-2176
+    - (546) 764-8934

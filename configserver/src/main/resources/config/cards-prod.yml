@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+cards:
+  message: "Welcome to Cards related production APIs "
+  contactDetails:
+    name: "Sandra Harald - Product Owner"
+    email: "{cipher}ffd3489ddb6152b7c60bfac6fb7a5adedb38ea060e36d54a4e9df72056da47f432fd84f4895594417325c280497a3ace"
+  onCallSupport:
+    - (617) 432-2356
+    - (936) 564-8721

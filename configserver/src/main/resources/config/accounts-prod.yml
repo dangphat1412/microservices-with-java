@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+accounts:
+  message: "Welcome to Accounts related production APIs "
+  contactDetails:
+    name: "Reine Aishwarya - Product Owner"
+    email: "{cipher}a0190cdf087c1065bb6820e02dca0158e2dda48bd7554205de53ce5988711751b944c81133ffdb8be6e94eb571914dee"
+  onCallSupport:
+    - (453) 392-4829
+    - (236) 203-0384

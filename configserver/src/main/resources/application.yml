@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: config-server
+  profiles:
+    #    active: git
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config
+  #          search-locations: "file:///Users//dangphat//Documents//config"
+  #        git:
+  #          uri: "https://github.com/dangphat1412/config-repo.git"
+  #          default-label: main
+  #          timeout: 5
+  #          clone-on-start: true
+  #          force-pull: true
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: guest
+    password: guest
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+encrypt:
+  key: 7a9f3c2e8b1d4f6a5c9e2b8d1f4a7c3e
+server:
+  port: 8071

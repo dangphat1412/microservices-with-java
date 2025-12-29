@@ -1,0 +1,11 @@
+build:
+  version: "3.0"
+
+cards:
+  message: "Welcome to Cards related local APIs "
+  contactDetails:
+    name: "Dragos Lech - Developer"
+    email: "{cipher}571e254cf2abb14c3a0ddbdac300bfed391c81733a990d9c88e8473708ba27e5276c66250f8bb2829d80da0361ff0462"
+  onCallSupport:
+    - (412) 419-3491
+    - (915) 382-1932

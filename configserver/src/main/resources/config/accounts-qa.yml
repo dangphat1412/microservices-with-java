@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+accounts:
+  message: "Welcome to Accounts related QA APIs "
+  contactDetails:
+    name: "Smitha Ray - QA Lead"
+    email: "{cipher}9aa9f6a44be26f5cb865aca9568cde5f25ab7f7f5623a0fb5c61845318ae27d23af88a219ebda5c08a50f82940d84be1"
+  onCallSupport:
+    - (666) 265-3765
+    - (666) 734-8371

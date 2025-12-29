@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+loans:
+  message: "Welcome to Loans related production APIs "
+  contactDetails:
+    name: "Pelias Sudhir - Product Owner"
+    email: "{cipher}d0b6cf910d7f2342fba3a3c0fd8a3ed17e1310f426ef52f0e154ab1bee0934e629e5c2f576aa425e45082fce73fcd885"
+  onCallSupport:
+    - (723) 656-8709
+    - (156) 342-0956

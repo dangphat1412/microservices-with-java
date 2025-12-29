@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+cards:
+  message: "Welcome to Cards related QA APIs "
+  contactDetails:
+    name: "Cherryl Pankaj - QA Lead"
+    email: "{cipher}4a679d9208aa26c9cde628414f7375b18b4f740818b98d603e8c18846d105a51045db48f42b44bfc303b301a940c3a0b"
+  onCallSupport:
+    - (310) 875-4367
+    - (201) 236-1267

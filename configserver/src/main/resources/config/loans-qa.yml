@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+loans:
+  message: "Welcome to Loans related QA APIs "
+  contactDetails:
+    name: "Cyrano Marita - QA Lead"
+    email: "{cipher}36c03f0eeeba429626ebf1964942321840ec270f9ce36649d719ac90ff98c588d45525d8d9835dfce49d5322a938826f"
+  onCallSupport:
+    - (785) 545-6565
+    - (853) 546-3467

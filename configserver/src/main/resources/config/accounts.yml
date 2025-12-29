@@ -1,0 +1,11 @@
+build:
+  version: "3.0"
+
+accounts:
+  message: "Welcome to Cccounts related local APIs "
+  contactDetails:
+    name: "John Doe - Developer"
+    email: "{cipher}103f2fb0978f1e6401b457a4057cfdc63f0b1fc1d8ca668416d47149a4dba638"
+  onCallSupport:
+    - (555) 555-1234
+    - (555) 523-1345
