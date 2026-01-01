@@ -29,5 +29,6 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: qa
       CONFIG_HOST: "http://configserver:8071"
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root

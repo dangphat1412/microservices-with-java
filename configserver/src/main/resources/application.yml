@@ -17,7 +17,7 @@ spring:
   #          clone-on-start: true
   #          force-pull: true
   rabbitmq:
-    host: "localhost"
+    host: ${SPRING_RABBITMQ_HOST:localhost}
     port: 5672
     username: guest
     password: guest
