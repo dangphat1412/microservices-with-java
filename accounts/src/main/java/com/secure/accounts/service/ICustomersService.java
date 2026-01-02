@@ -9,5 +9,5 @@ public interface ICustomersService {
      * @param mobileNumber the mobile number of the customer
      * @return CustomerDetailsDto containing customer information
      */
-    CustomerDetailsDto fetchCustomerDetails(String mobileNumber);
+    CustomerDetailsDto fetchCustomerDetails(String mobileNumber, String correlationId);
 }

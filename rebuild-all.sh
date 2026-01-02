@@ -7,7 +7,7 @@ echo "=========================================="
 echo "Rebuilding All Microservices"
 echo "=========================================="
 
-SERVICES=("configserver" "eurekaserver" "accounts" "loans" "cards")
+SERVICES=("configserver" "eurekaserver" "accounts" "loans" "cards" "gatewayserver")
 
 for service in "${SERVICES[@]}"; do
     echo ""
