@@ -32,7 +32,7 @@ public class CustomerController {
             @ApiResponse(responseCode = "500", description = "HTTP Status Internal Server Error")
     })
     @GetMapping("/fetchCustomerDetails")
-    public ResponseEntity<CustomerDetailsDto> fetchCustomerDetails(@RequestHeader("bank-correlation-id") String correlationId,
+    public ResponseEntity<CustomerDetailsDto> fetchCustomerDetails(@RequestHeader(value = "bank-correlation-id", required = false) String correlationId,
                                                                    @RequestParam @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile number must be 10 digits") String mobileNumber) {
         logger.debug("bank-correlation-id: {}", correlationId);
         CustomerDetailsDto customerDetailsDto = iCustomersService.fetchCustomerDetails(mobileNumber, correlationId);

@@ -5,6 +5,8 @@ import com.secure.accounts.dto.AccountsContractInfoDto;
 import com.secure.accounts.dto.CustomerDto;
 import com.secure.accounts.dto.ResponseDto;
 import com.secure.accounts.service.IAccountsService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -12,6 +14,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -26,6 +30,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @Validated
 public class AccountsController {
+    private static final Logger logger = LoggerFactory.getLogger(AccountsController.class);
+
     private final IAccountsService iAccountsService;
     private final Environment environment;
     private final AccountsContractInfoDto accountsContractInfoDto;
@@ -106,9 +112,16 @@ public class AccountsController {
             @ApiResponse(responseCode = "200", description = "Build information fetched successfully"),
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
+    @Retry(name = "getBuildInfo", fallbackMethod = "getBuildInfoFallback")
     @GetMapping("/build-info")
     public ResponseEntity<String> getBuildVersion() {
+        logger.debug("getBuildVersion() method invoked");
         return ResponseEntity.ok(buildVersion);
+    }
+
+    public ResponseEntity<String> getBuildInfoFallback(Throwable throwable) {
+        logger.debug("getBuildInfoFallback() method invoked");
+        return ResponseEntity.ok("0.9");
     }
 
     @Operation(summary = "Get Java version", description = "Get the Java version used by the Accounts Microservice")
@@ -116,9 +129,14 @@ public class AccountsController {
             @ApiResponse(responseCode = "200", description = "Java version fetched successfully"),
             @ApiResponse(responseCode = "500", description = "Internal Server Error")
     })
+    @RateLimiter(name = "getJavaVersion", fallbackMethod = "getJavaVersionFallback")
     @GetMapping("/java-version")
     public ResponseEntity<String> getJavaVersion() {
         return ResponseEntity.ok(environment.getProperty("java.version"));
+    }
+
+    public ResponseEntity<String> getJavaVersionFallback(Throwable throwable) {
+        return ResponseEntity.ok("Java 21");
     }
 
     @Operation(summary = "Get Contact Info", description = "Get the contact information for the Accounts Microservice")

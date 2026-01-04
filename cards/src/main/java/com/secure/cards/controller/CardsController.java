@@ -58,7 +58,7 @@ public class CardsController {
             @ApiResponse(responseCode = "500", description = "HTTP Status Internal Server Error")
     })
     @GetMapping("/fetch")
-    public ResponseEntity<CardsDto> fetchCardDetails(@RequestHeader("bank-correlation-id") String correlationId,
+    public ResponseEntity<CardsDto> fetchCardDetails(@RequestHeader(value = "bank-correlation-id", required = false) String correlationId,
                                                      @RequestParam @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile number must be 10 digits")
                                                      String mobileNumber) {
         log.debug("bank-correlation-id: {}", correlationId);
